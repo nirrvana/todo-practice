@@ -16,6 +16,11 @@ class App extends React.Component {
           title: "죽음과 결혼은 미룰수록 좋다",
           done: [],
           haveTo: ['똥싸기', '밥묵기', '잠자기', '그외 전부 리액트']
+        },
+        {
+          title: "너무 늦었다고 생각할 때가 진짜 늦었다",
+          done: [],
+          haveTo: ['인생은 한 방']
         }
       ],
       currentList: {
@@ -26,12 +31,17 @@ class App extends React.Component {
     };
     this.selectTodoList = this.selectTodoList.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.addTodoList = this.addTodoList.bind(this);
   }
 
   selectTodoList(list) {
     this.setState({
       currentList: list
     });
+  }
+
+  addTodoList(list) {
+
   }
 
   handleDelete() {
@@ -45,6 +55,7 @@ class App extends React.Component {
           <Nav
             selectTodoList={this.selectTodoList}
             allTodoList={this.state.allTodoList}
+            addTodoList={this.addTodoList}
           />
         </div>
         <div className="right">

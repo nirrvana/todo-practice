@@ -17,3 +17,11 @@
   position: absolute;
   bottom: 0;
 }
+
+.hide {
+  display: none;
+}
+
+.show {
+  /* display:  */
+}
