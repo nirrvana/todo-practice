@@ -18,7 +18,9 @@ class View extends React.Component {
 
   handleKeyup(e) {
     if (e.key === "Enter") {
-      this.props.addTodo(this.props.currentList.title, e.target.value);
+      this.props.addTodo(Object.keys(this.props.currentList) 
+        ? this.props.defaultList.title 
+        : this.props.currentList.title, e.target.value);
       this.setState({
         isClicked: false
       });
