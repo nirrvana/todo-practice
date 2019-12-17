@@ -18,10 +18,15 @@
   bottom: 0;
 }
 
-.hide {
+.addTodoBtn {
+  /* position: absolute; */
+  float: right;
+}
+
+.addTodoList, .addTodo {
   display: none;
 }
 
 .show {
-  /* display:  */
+  display: block;
 }

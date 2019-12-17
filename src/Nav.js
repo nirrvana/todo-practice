@@ -35,7 +35,7 @@ class Nav extends React.Component {
         selectTodoList={this.props.selectTodoList}
       />
       
-      <input className={'register ' + (this.state.isClicked ? 'show':'hide')} onKeyDown={this.handleKeypress}></input>    
+      <input className={'addTodoList ' + (this.state.isClicked ? 'show':'')} onKeyDown={this.handleKeypress}></input>    
       <button className="addTodoListBtn" onClick={this.handleClick}>목록추가</button>
     </div>
     )

@@ -32,6 +32,7 @@ class App extends React.Component {
     this.selectTodoList = this.selectTodoList.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.addTodoList = this.addTodoList.bind(this);
+    this.addTodo = this.addTodo.bind(this);
   }
 
   selectTodoList(list) {
@@ -53,6 +54,10 @@ class App extends React.Component {
         haveTo: []
       }
     });
+  }
+
+  addTodo() {
+
   }
 
   handleDelete(title, list) {
@@ -83,6 +88,7 @@ class App extends React.Component {
             currentList={this.state.currentList}
             defaultList={this.state.allTodoList[0]}
             handleDelete={this.handleDelete}
+            addTodo={this.addTodo}
           />
         </div>
       </div>

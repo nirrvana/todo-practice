@@ -1,31 +1,51 @@
 import React from "react";
 
-const View = ({ currentList, defaultList, handleDelete }) => {
-  return (
-    <div>
+class View extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isClicked: false
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({
+      isClicked: true
+    })
+  }
+
+  render() {
+    return (
       <div>
-        {Object.keys(currentList).length === 0
-          ? defaultList.title
-          : currentList.done.length === 0
-          ? ""
-          : "완료됨" + currentList.done.length}
+        <button className="addTodoBtn" onClick={this.handleClick}>
+          +
+        </button>
+        <div>
+          {Object.keys(this.props.currentList).length === 0
+            ? this.props.defaultList.title
+            : this.props.currentList.done.length === 0
+            ? ""
+            : "완료됨" + this.props.currentList.done.length}
+        </div>
+        <div>
+          {Object.keys(this.props.currentList).length === 0
+            ? ""
+            : this.props.currentList.haveTo.map((list, index) => (
+                <ul>
+                  <li
+                    className={`${index}`}
+                    onClick={() => this.props.handleDelete(this.props.currentList.title, list)}
+                  >
+                    {list}
+                  </li>
+                </ul>
+              ))}
+        </div>
+        <input className={"addTodo " + (this.state.isClicked ? 'show': '')}></input>
       </div>
-      <div>
-        {Object.keys(currentList).length === 0
-          ? ""
-          : currentList.haveTo.map((list, index) => (
-              <ul>
-                <li
-                  className={`${index}`}
-                  onClick={() => handleDelete(currentList.title, list)}
-                >
-                  {list}
-                </li>
-              </ul>
-            ))}
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default View;
