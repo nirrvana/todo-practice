@@ -1,6 +1,6 @@
-import React from 'react';
-import Nav from './Nav';
-import View from './View';
+import React from "react";
+import Nav from "./Nav";
+import View from "./View";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,12 +15,12 @@ class App extends React.Component {
         {
           title: "죽음과 결혼은 미룰수록 좋다",
           done: [],
-          haveTo: ['똥싸기', '밥묵기', '잠자기', '그외 전부 리액트']
+          haveTo: ["똥싸기", "밥묵기", "잠자기", "그외 전부 리액트"]
         },
         {
           title: "너무 늦었다고 생각할 때가 진짜 늦었다",
           done: [],
-          haveTo: ['인생은 한 방']
+          haveTo: ["인생은 한 방"]
         }
       ],
       currentList: {
@@ -42,8 +42,8 @@ class App extends React.Component {
 
   addTodoList(list) {
     this.setState({
-      allTodoList : this.state.allTodoList.concat({ 
-        title: list, 
+      allTodoList: this.state.allTodoList.concat({
+        title: list,
         done: [],
         haveTo: []
       }),
@@ -52,11 +52,20 @@ class App extends React.Component {
         done: [],
         haveTo: []
       }
-    })
+    });
   }
 
-  handleDelete() {
-
+  handleDelete(title, list) {
+    console.log(title, list)
+    this.setState({
+      allTodoList: this.state.allTodoList.map(todo => {
+        if (todo.title === title) {
+          todo.done = todo.done.concat(list);
+          todo.haveTo = todo.haveTo.filter(memo => memo !== list)
+        }
+        return todo;
+      })
+    });
   }
 
   render() {
@@ -73,6 +82,7 @@ class App extends React.Component {
           <View
             currentList={this.state.currentList}
             defaultList={this.state.allTodoList[0]}
+            handleDelete={this.handleDelete}
           />
         </div>
       </div>
