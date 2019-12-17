@@ -8,7 +8,7 @@ class Nav extends React.Component {
       isClicked: false
     }
     this.handleClick = this.handleClick.bind(this);
-    this.handleKeypress = this.handleKeypress.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
   }
 
   handleClick() {
@@ -17,7 +17,7 @@ class Nav extends React.Component {
     })
   }
 
-  handleKeypress(e) {
+  handleKeyUp(e) {
     if(e.key === 'Enter') {
       console.log(e.target.value);
       this.props.addTodoList(e.target.value);
@@ -35,7 +35,7 @@ class Nav extends React.Component {
         selectTodoList={this.props.selectTodoList}
       />
       
-      <input className={'addTodoList ' + (this.state.isClicked ? 'show':'')} onKeyDown={this.handleKeypress}></input>    
+      <input className={'addTodoList ' + (this.state.isClicked ? 'show':'')} onKeyUp={this.handleKeyUp}></input>    
       <button className="addTodoListBtn" onClick={this.handleClick}>목록추가</button>
     </div>
     )
