@@ -18,13 +18,18 @@ class View extends React.Component {
 
   handleKeyup(e) {
     if (e.key === "Enter") {
-      this.props.addTodo(Object.keys(this.props.currentList) 
-        ? this.props.defaultList.title 
-        : this.props.currentList.title, e.target.value);
+      console.log('a',this.props.currentList);
+      if (Object.keys(this.props.currentList).length === 0) {
+        this.props.addTodo(this.props.defaultList.title, e.target.value);
+        this.props.selectTodoList(this.props.defaultList);
+      } else {
+        this.props.addTodo(this.props.currentList.title, e.target.value);
+        this.props.selectTodoList(this.props.currentList);
+      }
       this.setState({
         isClicked: false
       });
-      e.target.value = '';
+      e.target.value = "";
     }
   }
 
@@ -34,11 +39,14 @@ class View extends React.Component {
         <button className="addTodoBtn" onClick={this.handleClick}>
           +
         </button>
-        <div>
+        <div className="title">
           {Object.keys(this.props.currentList).length === 0
             ? this.props.defaultList.title
-            : this.props.currentList.done.length === 0
-            ? this.props.currentList.title
+            : this.props.currentList.title}
+        </div>
+        <div className="done">
+          {Object.keys(this.props.currentList).length === 0
+            ? "완료됨" + this.props.defaultList.done.length
             : "완료됨" + this.props.currentList.done.length}
         </div>
         <div>

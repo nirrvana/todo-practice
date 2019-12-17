@@ -6,6 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // isClicked: false,
       allTodoList: [
         {
           title: "내일일은 내일모레",
@@ -23,17 +24,22 @@ class App extends React.Component {
           haveTo: ["인생은 한 방"]
         }
       ],
-      currentList: {
-        // title: "죽음과 결혼은 미룰수록 좋다",
-        // done: [],
-        // haveTo: ['똥싸기', '밥묵기', '잠자기', '그외 전부 리액트']
-      }
+      currentList: {}
     };
     this.selectTodoList = this.selectTodoList.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.addTodoList = this.addTodoList.bind(this);
     this.addTodo = this.addTodo.bind(this);
   }
+
+  // unselectedState() {
+  //   if (!this.state.isClicked) {
+  //     this.setState({
+  //       currentList: this.state.allTodoList[0],
+  //       isClicked: !this.state.isClicked
+  //     })
+  //   } 
+  // }
 
   selectTodoList(list) {
     this.setState({
@@ -57,7 +63,7 @@ class App extends React.Component {
   }
 
   addTodo(title, todo) {
-    console.log(title, todo)
+    console.log(title, todo);
     this.setState({
       allTodoList: this.state.allTodoList.map(list => {
         if (list.title === title) {
@@ -65,16 +71,16 @@ class App extends React.Component {
         }
         return list;
       })
-    })
+    });
   }
 
   handleDelete(title, list) {
-    console.log(title, list)
+    console.log(title, list);
     this.setState({
       allTodoList: this.state.allTodoList.map(todo => {
         if (todo.title === title) {
           todo.done = todo.done.concat(list);
-          todo.haveTo = todo.haveTo.filter(memo => memo !== list)
+          todo.haveTo = todo.haveTo.filter(memo => memo !== list);
         }
         return todo;
       })
@@ -97,6 +103,7 @@ class App extends React.Component {
             defaultList={this.state.allTodoList[0]}
             handleDelete={this.handleDelete}
             addTodo={this.addTodo}
+            selectTodoList={this.selectTodoList}
           />
         </div>
       </div>
