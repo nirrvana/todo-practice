@@ -56,8 +56,16 @@ class App extends React.Component {
     });
   }
 
-  addTodo() {
-
+  addTodo(title, todo) {
+    console.log(title, todo)
+    this.setState({
+      allTodoList: this.state.allTodoList.map(list => {
+        if (list.title === title) {
+          list.haveTo.push(todo);
+        }
+        return list;
+      })
+    })
   }
 
   handleDelete(title, list) {

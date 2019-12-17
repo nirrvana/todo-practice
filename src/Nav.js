@@ -24,6 +24,7 @@ class Nav extends React.Component {
       this.setState({ 
         isClicked: false
       })
+      e.target.value = '';
     }
   }
 
