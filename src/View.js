@@ -4,7 +4,8 @@ class View extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false
+      isClicked: false,
+      currentList: this.props.currentList
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyup = this.handleKeyup.bind(this);
@@ -22,6 +23,7 @@ class View extends React.Component {
       if (Object.keys(this.props.currentList).length === 0) {
         this.props.addTodo(this.props.defaultList.title, e.target.value);
         this.props.selectTodoList(this.props.defaultList);
+        
       } else {
         this.props.addTodo(this.props.currentList.title, e.target.value);
         this.props.selectTodoList(this.props.currentList);
@@ -34,6 +36,7 @@ class View extends React.Component {
   }
 
   render() {
+    console.log('ccc', this.props.currentList)
     return (
       <div>
         <button className="addTodoBtn" onClick={this.handleClick}>

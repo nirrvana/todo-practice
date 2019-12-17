@@ -34,6 +34,7 @@ class Nav extends React.Component {
       <TodoListContainer 
         allTodoList={this.props.allTodoList}
         selectTodoList={this.props.selectTodoList}
+        // currentList={this.props.currentList}
       />
       
       <input className={'addTodoList ' + (this.state.isClicked ? 'show':'')} onKeyUp={this.handleKeyUp}></input>    

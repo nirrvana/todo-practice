@@ -63,14 +63,19 @@ class App extends React.Component {
   }
 
   addTodo(title, todo) {
-    console.log(title, todo);
+    console.log('addTodo', title, todo);
+    const newTodoLists = this.state.allTodoList.map(list => {
+      if (list.title === title) {
+        list.haveTo.push(todo);
+      }
+      return list;
+    })
+    const newCurrentList = newTodoLists.filter(list =>
+      list.title === title)[0]
+      console.log('1004',newCurrentList)
     this.setState({
-      allTodoList: this.state.allTodoList.map(list => {
-        if (list.title === title) {
-          list.haveTo.push(todo);
-        }
-        return list;
-      })
+      allTodoList: newTodoLists,
+      currentList: newCurrentList
     });
   }
 
@@ -95,6 +100,7 @@ class App extends React.Component {
             selectTodoList={this.selectTodoList}
             allTodoList={this.state.allTodoList}
             addTodoList={this.addTodoList}
+            // currentList={this.currentList}
           />
         </div>
         <div className="right">

@@ -6,7 +6,11 @@ const TodoListContainer = props => (
   <div>
     {props.allTodoList.map(todoList => (
       <div>
-        <TodoList selectTodoList={props.selectTodoList} todoList={todoList} />
+        <TodoList 
+          selectTodoList={props.selectTodoList} 
+          todoList={todoList}
+          // currentList={props.currentList} 
+        />
       </div>
     ))}
   </div>
