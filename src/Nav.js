@@ -21,6 +21,9 @@ class Nav extends React.Component {
     if(e.key === 'Enter') {
       console.log(e.target.value);
       this.props.addTodoList(e.target.value);
+      this.setState({ 
+        isClicked: false
+      })
     }
   }
 

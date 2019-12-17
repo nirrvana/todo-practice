@@ -4,12 +4,12 @@ const View = ({ currentList, defaultList, handleDelete }) => {
   return (
     <div>
       <div>
-        {Object.keys(currentList.done).length === 0
-          ? '완료됨:' + currentList.done.length
-          : defaultList.title}
+        {Object.keys(currentList).length === 0
+          ? defaultList.title
+          : currentList.done.length === 0 ? '' : '완료됨' + currentList.done.length}
       </div>
       <div>
-        {Object.keys(currentList.haveTo).length === 0
+        {Object.keys(currentList).length === 0
           ? '' 
           : currentList.haveTo.map((list, index) => (
               <ul>

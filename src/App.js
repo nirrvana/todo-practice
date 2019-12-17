@@ -24,9 +24,9 @@ class App extends React.Component {
         }
       ],
       currentList: {
-        title: "죽음과 결혼은 미룰수록 좋다",
-        done: [],
-        haveTo: ['똥싸기', '밥묵기', '잠자기', '그외 전부 리액트']
+        // title: "죽음과 결혼은 미룰수록 좋다",
+        // done: [],
+        // haveTo: ['똥싸기', '밥묵기', '잠자기', '그외 전부 리액트']
       }
     };
     this.selectTodoList = this.selectTodoList.bind(this);
@@ -41,7 +41,18 @@ class App extends React.Component {
   }
 
   addTodoList(list) {
-
+    this.setState({
+      allTodoList : this.state.allTodoList.concat({ 
+        title: list, 
+        done: [],
+        haveTo: []
+      }),
+      currentList: {
+        title: list,
+        done: [],
+        haveTo: []
+      }
+    })
   }
 
   handleDelete() {
