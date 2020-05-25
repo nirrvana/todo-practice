@@ -1,0 +1,32 @@
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  border: 1px solid red;
+  width: 30%;
+}
+
+.right {
+  border: 1px solid blue;
+  width: 70%;
+}
+
+.addTodoListBtn {
+  position: absolute;
+  bottom: 0;
+}
+
+.addTodoBtn {
+  /* position: absolute; */
+  float: right;
+}
+
+.addTodoList, .addTodo {
+  display: none;
+}
+
+.show {
+  display: block;
+}
